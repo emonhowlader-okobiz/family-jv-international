@@ -8,7 +8,6 @@ import sendResponse from "./app/utils/sendResponse";
 import { router } from "./app/routes";
 import { apiLimiter } from "./app/middlewares/apiLimiter";
 import passport from "passport";
-import "./app/config/passport";
 
 const app: Application = express();
 

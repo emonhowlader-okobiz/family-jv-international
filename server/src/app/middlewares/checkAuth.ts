@@ -1,23 +1,20 @@
 import type { Request, Response, NextFunction } from "express";
 import { TJwtPayload, verifyAccessToken } from "../utils/jwt";
 import { AppError } from "../errors/AppError";
-import { User } from "../models";
-import type { UserRole } from "../models";
+import { User, UserRole, UserStatus } from "../modules/user/user.model";
 
 export const checkAuth =
     (...allowedRoles: UserRole[]) =>
         async (req: Request, res: Response, next: NextFunction) => {
             try {
-                // const authorization = req.headers.authorization;
+                let token: string | undefined;
 
-                // if (!authorization || !authorization.startsWith("Bearer ")) {
-                //     throw new AppError("Unauthorized access", 401);
-                // }
+                if (req.headers.authorization?.startsWith("Bearer ")) {
+                    token = req.headers.authorization.split(" ")[1];
+                } else if (req.cookies?.accessToken) {
+                    token = req.cookies.accessToken;
+                }
 
-                // const token = authorization.split(" ")[1];
-
-                const token = req?.headers.authorization || req?.cookies.accessToken;
-                // console.log('req?.headers.authorization==>', req?.headers.authorization);
                 if (!token) {
                     throw new AppError("Unauthorized access", 401);
                 }
@@ -34,7 +31,7 @@ export const checkAuth =
                     throw new AppError("This account has been deleted", 403);
                 }
 
-                if (user.status === "BLOCKED") {
+                if (user.status === UserStatus.SUSPENDED) {
                     throw new AppError("This account has been blocked", 403);
                 }
 

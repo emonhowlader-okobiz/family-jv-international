@@ -1,18 +1,17 @@
 import { Server } from 'http';
 import app from "./app";
 import { env } from "./app/config/env";
-import { seedSuperAdmin } from "./app/utils/seedAdmin";
-import { connectRedis } from './app/lib/redis';
 import { connectDB } from './app/lib/mongoose';
+import { seedAdmin } from "./app/utils/seedAdmin";
 
 let server: Server;
 
 async function main() {
   try {
     // 1. Initial Logic (DB Seed, etc.)
-    await connectRedis();
+    // await connectRedis();
     await connectDB();
-    await seedSuperAdmin();
+    await seedAdmin();
 
     // 2. Start Listening
     server = app.listen(env.PORT, () => {
