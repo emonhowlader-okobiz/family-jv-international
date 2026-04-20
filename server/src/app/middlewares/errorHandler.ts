@@ -1,0 +1,83 @@
+import type { ErrorRequestHandler } from "express";
+import { ZodError } from "zod";
+import { AppError } from "../errors/AppError";
+import { handleZodError } from "../errors/handleZodError";
+import { handleMongooseError } from "../errors/handleMongooseError";
+import { handleJwtError } from "../errors/handleJwtError";
+import multer from "multer";
+
+export const errorHandler: ErrorRequestHandler = (
+    err,
+    req,
+    res,
+    next
+) => {
+    let statusCode = 500;
+    let message = "Internal Server Error";
+    let errors;
+
+
+    // Mongoose
+    const mongooseError = handleMongooseError(err);
+    if (mongooseError) {
+        statusCode = mongooseError.statusCode;
+        message = mongooseError.message;
+        errors = mongooseError.errors;
+    }
+
+    // JWT
+    else {
+        const jwtError = handleJwtError(err);
+        if (jwtError) {
+            statusCode = jwtError.statusCode;
+            message = jwtError.message;
+        }
+
+        // Zod
+        else if (err instanceof ZodError) {
+            const formatted = handleZodError(err);
+            statusCode = formatted.statusCode;
+            message = formatted.message;
+            errors = formatted.errors;
+        }
+
+
+        else if (err instanceof multer.MulterError) {
+            if (err.code === 'LIMIT_FILE_SIZE') {
+                message = 'File too large. Maximum size is 5MB.'
+            }
+            if (err.code === 'LIMIT_FILE_COUNT') {
+                message = 'Too many files. Maximum 10 files allowed.'
+            }
+        }
+
+        else if (err.message === 'Only image files are allowed!') {
+            message = err.message
+        }
+
+        // AppError
+        else if (err instanceof AppError) {
+            statusCode = err.statusCode;
+            message = err.message;
+        }
+        else if (err instanceof Error) {
+            message = err.message;
+        }
+    }
+
+
+    const response: Record<string, unknown> = {
+        success: false,
+        message,
+    };
+
+    if (errors) response.errors = errors;
+    if (process.env.NODE_ENV === "development") {
+        response.stack = err instanceof Error ? err.stack : undefined;
+    }
+
+    console.error("🔥 Error:", err);
+    console.log('error res==>', response);
+
+    res.status(statusCode).json(response);
+};
