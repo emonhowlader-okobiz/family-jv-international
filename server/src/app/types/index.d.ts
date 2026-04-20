@@ -1,4 +1,4 @@
-import type { UserRole } from "../models";
+import type { UserRole } from "../models/index";
 
 declare global {
     namespace Express {
@@ -11,4 +11,3 @@ declare global {
         }
     }
 }
-

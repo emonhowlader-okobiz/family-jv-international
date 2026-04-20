@@ -18,7 +18,7 @@ const streamUpload = (buffer: Buffer, public_id: string) => {
     return new Promise<any>((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
             {
-                folder: 'Khelaghor-images',
+                folder: 'FJV-International',
                 public_id,
                 overwrite: false,
             },

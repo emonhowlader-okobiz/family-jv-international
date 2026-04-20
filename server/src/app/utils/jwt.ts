@@ -1,6 +1,6 @@
 import jwt, { type JwtPayload, type SignOptions } from "jsonwebtoken";
 import { env } from "../config/env";
-import { UserRole } from "../models";
+import { UserRole } from "../models/index";
 
 export type TJwtPayload = {
     userId: string;
