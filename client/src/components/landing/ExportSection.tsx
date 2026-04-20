@@ -1,9 +1,10 @@
 import React from 'react'
+import Container from '../shared/Container'
 
 const ExportSection = () => {
     return (
-        <section className="py-32 bg-surface-container-low">
-            <div className="max-w-[1440px] mx-auto px-8 md:px-16 lg:px-24">
+        <section className="py-32 bg-[#f5f0e6]">
+            <Container>
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                     <div>
                         <span className="block text-secondary tracking-[0.05em] uppercase text-sm font-bold mb-4 font-label">Outbound Logistics</span>
@@ -18,7 +19,7 @@ const ExportSection = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {/* Card 1 */}
-                    <div className="group bg-surface-container-lowest rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2">
+                    <div className="group bg-[#fcf9f4] rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2">
                         <div className="h-64 overflow-hidden">
                             <img
                                 alt=""
@@ -34,7 +35,7 @@ const ExportSection = () => {
                         </div>
                     </div>
                     {/* Card 2 */}
-                    <div className="group bg-surface-container-lowest rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2 mt-0 lg:mt-8">
+                    <div className="group bg-[#fcf9f4] rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2 mt-0 lg:mt-8">
                         <div className="h-64 overflow-hidden">
                             <img
                                 alt=""
@@ -50,7 +51,7 @@ const ExportSection = () => {
                         </div>
                     </div>
                     {/* Card 3 */}
-                    <div className="group bg-surface-container-lowest rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2">
+                    <div className="group bg-[#fcf9f4] rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2">
                         <div className="h-64 overflow-hidden">
                             <img
                                 alt=""
@@ -66,10 +67,10 @@ const ExportSection = () => {
                         </div>
                     </div>
                     {/* Card 4 */}
-                    <div className="group bg-surface-container-lowest rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2 mt-0 lg:mt-8">
+                    <div className="group bg-[#fcf9f4] rounded-xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2 mt-0 lg:mt-8">
                         <div className="h-64 overflow-hidden">
                             <img
-                                alt=""
+                                alt="image of raw materials"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 data-alt="Stack of polished raw metallic ingots catching dramatic studio lighting against a dark background"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvtz7xXWSJ8WitnaIOb-hbHMznX9HkLKMY4nO2FiWtNqdVpmX6aylG6AFSPXaMJ3uzUaaHK9NxyUsgmJFknbOddBXkfE_nFrawmNONRGs3oM6R4Q5ibfHOYY4pON6dOxey1aPVnFKmegDHEQHj-TSiobInuqc1tKGHeIfyJY0IcnpsYWWMMZnAx1FiXfAP8F8ch5owWWEL99FZGPrADdZ5wxynOqCFoqtTl3kgPV4Rei9_XktM5zI7iMrj87RwRMGuWZQ9WpSV7Yc"
@@ -82,7 +83,9 @@ const ExportSection = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </Container>
+
         </section>
     )
 }
