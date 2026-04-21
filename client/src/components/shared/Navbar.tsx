@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <nav className="sticky top-0 w-full bg-[#d7cec8] dark:bg-slate-950/70 backdrop-blur-xl shadow-sm no-border shadow-[0_1px_0_0_rgba(0,0,0,0.05)]">
+        <nav className="w-full bg-secondary/50 shadow-sm no-border">
             <div className="flex justify-between items-center px-8 h-20 w-full max-w-screen-2xl mx-auto">
                 <div className="text-xl font-bold tracking-tighter text-slate-900 dark:text-white font-headline">
                     Family JV International
