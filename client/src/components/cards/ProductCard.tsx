@@ -9,7 +9,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
                 <div className='relative'>
                     <img src={image} alt="img" />
 
-                    <div className='border border-secondary py-1 px-2 w-fit bg-neutral absolute top-3 left-3'>{category}</div>
+                    <div className='border border-secondary rounded-lg py-1 px-2 w-fit bg-neutral absolute top-4 left-4'>{category}</div>
                 </div>
 
                 <div className='p-3'>
@@ -19,9 +19,9 @@ const ProductCard = ({ product }: { product: TProduct }) => {
 
             </div>
 
-            <div className='flex items-center justify-between p-3'>
+            <div className='flex items-center justify-between p-3 bg-secondary/10'>
                 <p>MOQ: {moq}</p>
-                <Link href={`/export/${slug}`} className='bg-primary text-white p-2 rounded'>View Details</Link>
+                <Link href={`/export/${slug}`} className='bg-primary text-white p-2 rounded-lg'>View Details</Link>
             </div>
         </div>
     )

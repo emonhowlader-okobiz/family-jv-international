@@ -99,10 +99,10 @@ const ExportPage = () => {
                     <p className='text-lg mt-4 max-w-lg'>Explore our diverse range of export products, <br /> showcasing our commitment to quality and<br /> global trade excellence.</p>
                 </div>
 
-                <div className='bg-white rounded-lg py-4 px-3 flex flex-col sm:flex-row sm:items-center gap-3'>
+                <div className='bg-secondary/20 rounded-lg py-4 px-3 flex flex-col sm:flex-row sm:items-center gap-3'>
 
                     {/* Search */}
-                    <InputGroup className='border-0 max-w-auto'>
+                    <InputGroup className='max-w-auto'>
                         <InputGroupInput placeholder="Search..." />
                         <InputGroupAddon>
                             <SearchIcon />
@@ -111,7 +111,7 @@ const ExportPage = () => {
 
                     <div className='flex items-center gap-3 min-w-75'>
                         {/* Filter by Category */}
-                        <NativeSelect>
+                        <NativeSelect className='bg-white rounded-lg'>
                             <NativeSelectOption value="">Select All Category</NativeSelectOption>
                             {uniqueCategories.map(category => (
                                 <NativeSelectOption key={category} value={category.toLowerCase()}>{category}</NativeSelectOption>
@@ -119,14 +119,12 @@ const ExportPage = () => {
                         </NativeSelect>
 
                         {/* Sort */}
-                        <NativeSelect>
+                        <NativeSelect className='bg-white rounded-lg'>
                             <NativeSelectOption value="">Sort</NativeSelectOption>
                             <NativeSelectOption value="natural">Natural</NativeSelectOption>
                             <NativeSelectOption value="artificial">Atrificial</NativeSelectOption>
                         </NativeSelect>
                     </div>
-
-
                 </div>
 
                 <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8'>
